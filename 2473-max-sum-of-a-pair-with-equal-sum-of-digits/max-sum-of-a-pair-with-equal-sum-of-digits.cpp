@@ -1,28 +1,28 @@
 class Solution {
 public:
-    int digitSum(int num) {
+    int sumofdigit(int n){
         int sum = 0;
-        while (num > 0) {
-            sum += num % 10;
-            num /= 10;
+        while(n != 0){
+            sum += n % 10;
+            n = n / 10;
         }
         return sum;
     }
-    
+
     int maximumSum(vector<int>& nums) {
-        unordered_map<int, int> maxMap;
-        int maxSum = -1;
-        
-        for (int num : nums) {
-            int sumDigits = digitSum(num);
-            
-            if (maxMap.find(sumDigits) != maxMap.end()) {
-                maxSum = max(maxSum, maxMap[sumDigits] + num);
+        unordered_map <int, int> mp;
+        int maxsum = -1;
+
+        for(int n : nums){
+            int sum = sumofdigit(n);
+
+            if(mp.find(sum) != mp.end()){
+                maxsum = max(maxsum, n + mp[sum]);
             }
-            
-            maxMap[sumDigits] = max(maxMap[sumDigits], num);
+
+            mp[sum] = max(n, mp[sum]);
         }
-        
-        return maxSum;
+        return maxsum;
     }
+
 };
