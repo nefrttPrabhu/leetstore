@@ -6,9 +6,9 @@ public:
             mp[n]++;
         }
         
-        for (auto& [key, value] : mp) {
-            if (value == 1) {
-                return key;
+        for (auto it : mp) {
+            if (it.second == 1) {
+                return it.first;
             }
         }
         
