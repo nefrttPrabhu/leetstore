@@ -1,26 +1,26 @@
-class Solution {
-public:
-    string frequencySort(string s) {
         // sort(s.begin(),s.end());              //ascending sort array and string 
         // sort(s.rbegin(),s.rend());            //descending sort for string only
         // sort(s.begin(),s.end(),greater<int>); //descending sort for array only
 
-        unordered_map<char, int> charCount;
-        for (char c : s) {
-            charCount[c]++;
-        }
-
-        vector<char> sortedChars;
-        for (const auto& entry : charCount) {
-            sortedChars.push_back(entry.first);
-        }
-        sort(sortedChars.begin(), sortedChars.end(), [&](char a, char b) {
-            return charCount[a] > charCount[b];
-        });
-
+class Solution {
+public:
+    string frequencySort(string s) {
         string result;
-        for (char c : sortedChars) {
-            result += string(charCount[c], c);
+        unordered_map<char, int> mp;
+        priority_queue<pair<int, char>> pq;
+
+        for (char ch : s) {
+            mp[ch]++;
+        }
+
+        for (auto [ch, freq] : mp) {
+            pq.push({freq, ch});
+        }
+        
+        while (!pq.empty()) {
+            auto [freq, ch] = pq.top();
+            pq.pop();
+            result.append(freq, ch); 
         }
 
         return result;
