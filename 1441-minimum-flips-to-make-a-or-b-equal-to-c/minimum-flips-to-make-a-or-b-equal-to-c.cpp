@@ -25,3 +25,11 @@ public:
         return cnt;
     }
 };
+
+
+
+/* 1liner solution '0'
+int minFlips(int a, int b, int c) {
+    return popcount<uint>((a | b) ^ c) + popcount<uint>(a & b & ((a | b) ^ c));
+}
+*/
