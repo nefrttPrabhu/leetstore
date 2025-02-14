@@ -5,7 +5,7 @@ public:
 
         int c = 0;
 
-        while (pq.top() < k && pq.size() > 1) {
+        while (pq.top() < k) {
             long long smallest = pq.top();
             pq.pop();
 
