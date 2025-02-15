@@ -1,9 +1,9 @@
 class Solution {
 public:
     void dfs(vector<vector<int>>& adj, vector<int>& vis, int node){
-        vis[node]=1;
         for(auto it: adj[node]){
             if(!vis[it]){
+                vis[node] = 1;
                 dfs(adj, vis, it);
             }
         }
@@ -17,7 +17,7 @@ public:
 
         for(int i = 0;i < l; i++){
             for(int j = 0;j < l; j++){
-                if(a[i][j] == 1 && i != j){
+                if(a[i][j] == 1){
                     adj[i].push_back(j);
                 }
             }
