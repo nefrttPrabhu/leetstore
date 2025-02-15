@@ -3,7 +3,7 @@ public:
     void dfs(vector<vector<int>>& adj, vector<int>& vis, int node){
         for(auto it: adj[node]){//idhar agar vis[node] = 1 lagate then bus baar baar overwrite karta rehta of the visited nodes coz vis not vis ka check toh neeche rakh he lega
             if(!vis[it]){
-                vis[node] = 1;
+                vis[node] = 1;//idhar seedha bus non iterated walon pe 1 update hoga
                 dfs(adj, vis, it);
             }
         }
