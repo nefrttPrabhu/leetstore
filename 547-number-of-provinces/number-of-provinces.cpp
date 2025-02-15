@@ -2,8 +2,8 @@ class Solution {
 public:
     void dfs(vector<vector<int>>& adj, vector<int>& vis, int node){
         for(auto it: adj[node]){
-            if(!vis[it]){
                 vis[node] = 1;
+            if(!vis[it]){
                 dfs(adj, vis, it);
             }
         }
