@@ -26,8 +26,8 @@ public:
 
         for(int i = 0 ;i < l; i++){
             if(!vis[i]){
-                dfs(adj,vis,i);
                 cnt++;
+                dfs(adj,vis,i);
             }
         }
         return cnt;
