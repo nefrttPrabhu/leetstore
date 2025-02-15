@@ -21,16 +21,8 @@ public:
             mp[pattern[i]] = word;
         }
 
-        if(mp.size() != seen.size()) return false;
+    
         
-
-        
-        // for (auto& pair : mp) {
-        //     if (seen.find(pair.second) != seen.end()) {
-        //         return false;
-        //     }
-        //     seen.insert(pair.second);
-        // }
-        return !(ss >> word);
+        return !(ss >> word) && mp.size() == seen.size();
     } 
 };
