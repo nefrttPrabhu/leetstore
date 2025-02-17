@@ -1,30 +1,30 @@
 class Solution {
 public:
-    void backtrack(string &tiles, unordered_set<string> &ans, string &current, vector<int> &freq) {
-        if (!current.empty()) {
-            ans.insert(current);  // Add the current permutation to the set if it's non-empty
-        }
+    int count = 0;
 
-        for (int i = 0; i < tiles.size(); i++) {
+    void backtrack(string &tiles, vector<int> &freq) {
+        // Increment count for each valid sequence (not including empty sequence)
+        count++;
+
+        // Try using each character that is still available
+        for (int i = 0; i < 26; i++) {
             if (freq[i] > 0) {
-                // Skip duplicates: if the character is the same as the previous one and the previous one hasn't been used, skip it.
-                if (i > 0 && tiles[i] == tiles[i - 1] && freq[i - 1] > 0) continue;
-                current.push_back(tiles[i]);
+                // Use this character and reduce its frequency
                 freq[i]--;
-                backtrack(tiles, ans, current, freq);  // Recur with the reduced frequency of the character
-                current.pop_back();  // Backtrack
-                freq[i]++;  // Restore frequency
+                backtrack(tiles, freq);
+                // Backtrack: restore the frequency of this character
+                freq[i]++;
             }
         }
     }
 
     int numTilePossibilities(string tiles) {
-        sort(tiles.begin(), tiles.end());  // Sort to make sure duplicates are adjacent
-        unordered_set<string> ans;
-        string current;
-        vector<int> freq(tiles.size(), 1);  // Frequency map for each character
-        backtrack(tiles, ans, current, freq);
+        vector<int> freq(26, 0); // Frequency array for characters A-Z
+        for (char tile : tiles) {
+            freq[tile - 'A']++; // Count the occurrences of each letter
+        }
 
-        return ans.size();  // Return the count of unique permutations
+        backtrack(tiles, freq);
+        return count - 1; // Subtract 1 to exclude the empty sequence
     }
 };
