@@ -124,3 +124,32 @@ public:
         return ans;
     }
 };
+
+
+// class Solution {
+// public:
+//     vector<string> happy;
+//     int K;
+//     void generateString(string s, int N){
+//         int len = s.length();
+//         if(happy.size() == K) return;
+//         if(len == N){
+//             happy.push_back(s);
+//             return;
+//         }
+//         for(char ch = 'a'; ch <= 'c'; ++ch){
+//             if( s.length() != 0 && s.back()== ch) continue;
+//             s.push_back(ch);
+//             generateString(s,N);
+//             s.pop_back();
+//         }
+//     }
+
+//     string getHappyString(int n, int k) {
+//         K = k;
+//         generateString("",n);
+
+//         if(happy.size()<k) return "";
+//         return happy[k-1];
+//     }
+// };
