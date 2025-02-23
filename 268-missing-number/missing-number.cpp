@@ -84,10 +84,10 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         int n = nums.size();
-        for(int i = 0; i <= n; i++){
+        for(int i = 0; i <= n; i++){ // 0,1,2,3
             int c = 0;
-            for(int j = 0; j < n; j++){
-                if(nums[j] == i){
+            for(int j = 0; j < n; j++){ //a[0]=3, a[1]=0, a[2]=1
+                if(nums[j] == i){ //jab i=2 then j=3,0,1 but not 2 so c remained 0 and j ka toh scope he nhi hoga so we counted with help of i
                     c = 1;
                     break;
                 }
