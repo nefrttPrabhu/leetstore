@@ -1,3 +1,7 @@
+/*
+S1: jis index pe zero usko and uske baad ke do index ki bits flip
+S2: 0,1,1,1,0,0 -> 1,0,0,1,0,0 -> 1,1,1,0,0,0 -> 1,1,1,1,1,1
+*/
 class Solution {
 public:
     int minOperations(vector<int>& nums) {
