@@ -1,7 +1,7 @@
 class Solution {
 public:
-    bool isValid(std::string s) {
-        std::stack<char> st;
+    bool isValid(string s) {
+        stack<char> st;
         
         for(char ch : s) {
             if(ch == '{' || ch == '[' || ch == '(') {
