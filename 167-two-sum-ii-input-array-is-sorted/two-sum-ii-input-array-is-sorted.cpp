@@ -4,17 +4,16 @@ public:
         vector<int> n(numbers);
         int i = 0;
         int j = n.size() - 1;
-        
-        while(i <= j){
+
+        while (i < j) {
             int sum = n[i] + n[j];
-            if(sum == target){
+            if (sum == target) {
                 return {i + 1, j + 1};
             }
-            else if(sum > target){
-                j--;
-            }
-            else{
+            if (sum < target) {
                 i++;
+            } else {
+                j--;
             }
         }
         return {};
