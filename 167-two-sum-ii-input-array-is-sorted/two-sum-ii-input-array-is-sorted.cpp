@@ -5,7 +5,7 @@ public:
         int i = 0;
         int j = n.size() - 1;
 
-        while (i < j) {
+        while (i <= j) {
             int sum = n[i] + n[j];
             if (sum == target) {
                 return {i + 1, j + 1};
