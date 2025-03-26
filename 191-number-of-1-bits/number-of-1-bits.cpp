@@ -1,6 +1,13 @@
 class Solution {
 public:
     int hammingWeight(int n) {
-        return __builtin_popcount(n);
+        int c = 0;
+        while(n != 0){
+            if(n%2){
+                c++;
+            }
+            n = n / 2;
+        }
+        return c;
     }
 };
