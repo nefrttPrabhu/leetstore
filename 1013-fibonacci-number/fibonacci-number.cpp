@@ -14,7 +14,7 @@ public:
             dp[i] = dp[i - 1] + dp[i - 2];
         }
 
-        if(dp[n] != -1){
+        if(dp[n] == -1){
             return dp[n];
         }
 
