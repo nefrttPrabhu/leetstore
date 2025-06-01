@@ -1,23 +1,23 @@
 class Solution {
 public:
-    int fib(int n) {
+int ans(vector<int> &dp, int n){
+    if(n <= 1){
+        return n;
+    }
+    
+    if(dp[n] != -1){
+        return dp[n];
+    }
 
+    return dp[n] = ans(dp, n - 1) + ans(dp, n - 2);
+}
+    int fib(int n) {
         if(n <= 1){
             return n;
         }
-        
+
         vector<int> dp(n + 1, -1);
-        dp[0] = 0;
-        dp[1] = 1;
 
-        for(int i = 2; i <= n; i++){
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-
-        if(dp[n] == -1){
-            return dp[n];
-        }
-
-        return dp[n];
+        return ans(dp, n);
     }
 };
