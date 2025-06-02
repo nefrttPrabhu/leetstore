@@ -4,7 +4,9 @@ public:
         string word;
         unordered_set<string> seen;
         stringstream ss(s);
+
         int n = pattern.size();
+        
         unordered_map<char, string>mp;
 
         for(int i = 0; i < n; i++){
