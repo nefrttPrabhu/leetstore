@@ -4,19 +4,14 @@ public:
         map<int, int> mp;
         set<int> s;
 
-        for(int i = 0; i < arr.size(); i++){
-            mp[arr[i]]++;
-        }
+        for(auto it : arr)
+            mp[it]++;
 
-        for(auto it : mp){
+        for(auto it : mp)
             s.insert(it.second);
-        }
 
-        if(mp.size() == s.size()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        if(s.size() == mp.size())
+        return true;
+        return false;
     }
 };
