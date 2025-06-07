@@ -51,34 +51,81 @@
 // };
 
 
+// class Solution {
+// public:
+//     string robotWithString(string s) {
+//         unordered_map<char, int> mp;
+//         string ans = "";
+//         stack<int> t;
+
+//         for(auto c: s) mp[c]++;
+
+//         char cur = 'a';
+
+//         for(int i = 0; i < s.size(); i++) {
+//             t.push(s[i]);
+
+//             if(--mp[s[i]] == 0) {
+//                 mp.erase(s[i]);
+//             }
+
+//             while(mp.find(cur) == mp.end() && cur <= 'z') {
+//                 cur++;
+//             }
+
+//             while(!t.empty() && cur >= t.top()) {
+//                 ans += t.top();
+//                 t.pop();
+//             }
+
+//         }
+//         return ans;
+//     }
+// };
+
+
+
+
+
+
 class Solution {
 public:
     string robotWithString(string s) {
-        unordered_map<char, int> mp;
-        string ans = "";
-        stack<int> t;
+        string p ="";
+        stack<char> t;
+        map<char, int> mp;
 
-        for(auto c: s) mp[c]++;
+        for(auto it : s) mp[it]++;
 
-        char cur = 'a';
+        char curr = 'a';
 
-        for(int i = 0; i < s.size(); i++) {
-            t.push(s[i]);
+        for(int i = 0; i < s.size(); i++){
+            // while(t.empty() || s[i] > curr){pushing the same character repeatedly so infinite loop
+                t.push(s[i]);
+            // }
 
-            if(--mp[s[i]] == 0) {
+            if(--mp[s[i]] == 0){ //This check happens before decrementing the current s[i] and not mp[curr]
                 mp.erase(s[i]);
             }
 
-            while(mp.find(cur) == mp.end() && cur <= 'z') {
-                cur++;
-            }
+            // if (!mp.empty()) {
+                while (mp.find(curr) == mp.end() && curr <= 'z') {
+                    curr++;
+                }
 
-            while(!t.empty() && cur >= t.top()) {
-                ans += t.top();
+            // }
+
+
+            // while(s[i] == curr){s[i] is constant in this loop, not incrementing i so it's stuck forever
+            //     p += s[i];
+            // }
+
+            while(!t.empty() && t.top() <= curr){
+                p += t.top();
                 t.pop();
             }
-
         }
-        return ans;
+
+        return p;
     }
 };
