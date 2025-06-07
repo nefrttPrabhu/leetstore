@@ -108,12 +108,9 @@ public:
                 mp.erase(s[i]);
             }
 
-            // if (!mp.empty()) {
-                while (mp.find(curr) == mp.end() && curr <= 'z') {
-                    curr++;
-                }
-
-            // }
+            while (!mp.empty() && mp.find(curr) == mp.end() && curr <= 'z') {
+                curr++;
+            }
 
 
             // while(s[i] == curr){s[i] is constant in this loop, not incrementing i so it's stuck forever
@@ -124,6 +121,11 @@ public:
                 p += t.top();
                 t.pop();
             }
+        }
+
+        while (!t.empty()) {
+            p += t.top();
+            t.pop();
         }
 
         return p;
