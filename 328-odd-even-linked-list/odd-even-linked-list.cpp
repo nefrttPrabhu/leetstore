@@ -19,26 +19,17 @@ public:
         ListNode *odd = head;
         ListNode *temp = head;
         ListNode *evenh = even;
-        int c = 0;
 
-        while(odd && even && even -> next && odd -> next){
-            if(c == 0){
-                temp = even;
-                odd -> next = even -> next;
-                odd = temp -> next;
-                c++;
-            }
-            if(c == 1){
-                temp = odd;
-                even -> next = odd -> next;
-                even = temp -> next;
-                c--;
-            }
+        while (even && even->next) {
+            odd->next = even->next;
+            odd = odd->next;
+
+            even->next = odd->next;
+            even = even->next;
         }
 
-        if (odd) odd->next = evenh;
-        if (even) even->next = NULL;
-
+        odd->next = evenh;
         return head;
+
     }
 };
