@@ -29,8 +29,9 @@ public:
             }
 
             carry = sum / 10;
-            temp -> next = new ListNode(sum % 10);
-            temp = temp -> next;
+            ListNode *nn = new ListNode(sum % 10);
+            temp->next = nn;
+            temp = nn;
         }
         if(carry > 0) {
             temp -> next = new ListNode(carry);
