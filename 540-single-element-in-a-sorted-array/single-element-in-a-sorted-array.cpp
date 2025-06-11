@@ -18,7 +18,7 @@ public:
 
             if(nums[mid] == nums[mid + 1]){
                 if(isEven){
-                    l = mid + 1;
+                    l = mid + 2;
                 }
 
                 else{ 
