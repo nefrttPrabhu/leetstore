@@ -30,7 +30,7 @@ public:
                     h = mid;
                 }
                 else{
-                    l = mid + 1;
+                    l = mid + 2;
                 }
             }
         }
