@@ -11,7 +11,7 @@ public:
         }
 
         for (int i = 0; i < v.size() - 1; i++) {
-            maxi = max(maxi, abs(v[i] - v[(i + 1)])); 
+            maxi = max(maxi, abs(v[i] - v[i + 1])); 
         }
 
         return maxi;
