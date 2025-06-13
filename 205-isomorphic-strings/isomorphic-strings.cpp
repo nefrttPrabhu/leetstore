@@ -1,57 +1,32 @@
-// class Solution {
-// public:
-//     bool isIsomorphic(string s, string t) {
-//         if (s.length() != t.length()) 
-//             return false;
-        
-//         unordered_map<char, char> st;
-//         unordered_map<char, char> ts;
-        
-//         for (int i = 0; i < s.length(); i++) {
-//             char sc = s[i];
-//             char tc = t[i];
-
-//             if (st.count(sc) && st[sc] != tc) 
-//                 return false;
-
-//             if (ts.count(tc) && ts[tc] != sc) 
-//                 return false;
-
-//             st[sc] = tc;
-//             ts[tc] = sc;
-//         }
-        
-//         return true;
-//     }
-// };
-
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        int sn = s.size();
-        int tn = t.size();
-        if (sn != tn){
-            return false;
-        }
+        if (s.length() != t.length()) return false;
+
         unordered_map<char, char> mp;
-        unordered_set<char> used;
-        for(int i = 0; i < sn; i++){
-            if(mp.find(s[i]) == mp.end()){
-                if (used.find(t[i]) != used.end()) 
-                    return false; 
+        unordered_map<char, char> mpp;
 
-                mp[s[i]] = t[i];
-                used.insert(t[i]);
+        for (int i = 0; i < s.length(); ++i) {
+            char c1 = s[i];
+            char c2 = t[i];
+
+            if (mp.count(c1)) {
+                if (mp[c1] != c2)
+                    return false;
+            } 
+            else {
+                mp[c1] = c2;
             }
 
-            else if(mp[s[i]] == t[i]){
-                continue;
-            }
-
-            else{
-                return false;
+            if (mpp.count(c2)) {
+                if (mpp[c2] != c1)
+                    return false;
+            } 
+            else {
+                mpp[c2] = c1;
             }
         }
+
         return true;
     }
 };
