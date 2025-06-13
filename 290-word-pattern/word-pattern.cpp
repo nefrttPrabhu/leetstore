@@ -7,7 +7,7 @@ public:
 
         int n = pattern.size();
 
-        unordered_map<char, string>mp;
+        map<char, string>mp;
 
         for(int i = 0; i < n; i++){
             if(!(ss >> word)){
