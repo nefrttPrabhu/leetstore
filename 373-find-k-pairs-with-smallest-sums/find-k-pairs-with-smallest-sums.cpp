@@ -1,30 +1,26 @@
 class Solution {
 public:
     vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
-        vector<vector<int>> result;
-        if (nums1.empty() && nums2.empty() && k == 0) 
-        return result;
-        
-        auto cmp = [&](pair<int, int> a, pair<int, int> b) {
-            return nums1[a.first] + nums2[a.second] > nums1[b.first] + nums2[b.second];
-        };
-        
-        priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> minHeap(cmp);
-        
-        for (int i = 0; i < nums1.size() && i < k; i++) {
-            minHeap.emplace(i, 0);
+        vector<vector<int>> ans;
+        if (nums1.empty() || nums2.empty() || k == 0) return ans;
+
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<>> pq;
+
+        for (int i = 0; i < nums1.size() && i < k; ++i) {
+            pq.push({nums1[i] + nums2[0], {i, 0}});
         }
-        
-        while (k-- > 0 && !minHeap.empty()) {
-            auto [i, j] = minHeap.top();
-            minHeap.pop();
-            result.push_back({nums1[i], nums2[j]});
-            
+
+        while (!pq.empty() && k-- > 0) {
+            auto [sum, idx] = pq.top(); pq.pop();
+            int i = idx.first;
+            int j = idx.second;
+            ans.push_back({nums1[i], nums2[j]});
+
             if (j + 1 < nums2.size()) {
-                minHeap.emplace(i, j + 1);
+                pq.push({nums1[i] + nums2[j + 1], {i, j + 1}});
             }
         }
-        
-        return result;
+
+        return ans;
     }
 };
