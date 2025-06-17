@@ -6,11 +6,11 @@ public:
 
         priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<>> pq;
 
-        for (int i = 0; i < nums1.size() && i < k; ++i) {
+        for (int i = 0; i < nums1.size() && i < k; i++) {
             pq.push({nums1[i] + nums2[0], {i, 0}});
         }
 
-        while (!pq.empty() && k-- > 0) {
+        while (!pq.empty() && k--) {
             auto [sum, idx] = pq.top(); pq.pop();
             int i = idx.first;
             int j = idx.second;
