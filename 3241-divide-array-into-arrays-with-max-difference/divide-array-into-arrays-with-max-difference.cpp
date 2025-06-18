@@ -8,7 +8,7 @@ public:
             int a = nums[i];
             int b = nums[i + 1];
             int c = nums[i + 2];
-            if((c - a) != k && (c - a) > k) {
+            if(c - a > k) {
                 return {};
             }
             ans.push_back({a, b, c});
