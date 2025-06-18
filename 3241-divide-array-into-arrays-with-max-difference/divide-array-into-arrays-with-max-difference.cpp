@@ -4,7 +4,7 @@ public:
         sort(nums.begin(), nums.end());
         vector<vector<int>> ans;
         
-        for(int i = 0; i < nums.size(); i += 3) {
+        for(int i = 0; i < nums.size() - 2; i += 3) {
             int a = nums[i];
             int b = nums[i + 1];
             int c = nums[i + 2];
