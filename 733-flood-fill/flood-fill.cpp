@@ -12,12 +12,6 @@ using p = pair<int,int>;
             return image;
         }
 
-        // for(int i = 0; i < n; i++){
-        //     for(int j = 0; j < m; j++){
-        //         q.push({sr,sc});
-        //     }
-        // }
-
         image[sr][sc] = color;
         q.push({sr, sc});
 
