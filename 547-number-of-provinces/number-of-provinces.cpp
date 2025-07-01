@@ -16,7 +16,7 @@ public:
         int m = isConnected[0].size();
         int cnt = 0;
         
-        vector<vector<int>> adj(n + 1);
+        vector<vector<int>> adj(n);
         vector<int> vis(n, 0);
 
         for(int i = 0; i < n; i++){
