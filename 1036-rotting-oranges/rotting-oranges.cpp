@@ -23,6 +23,7 @@ public:
         if(fresh == 0) return 0;
 
         vector<vector<int>> dir = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};
+        
         while(!q.empty()){
             int size = q.size();
             cnt++;
