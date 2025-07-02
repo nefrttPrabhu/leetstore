@@ -5,7 +5,7 @@ public:
         map<int, int> mp;
 
         for(auto it : nums) mp[it]++; 
-        // if(mp.size() == 1) return cnt;
+        if(mp.size() == 1) return cnt;
 
         for(auto it : mp){
             if(mp.find(it.first + 1) != mp.end()){
