@@ -1,17 +1,18 @@
 class Solution {
 public:
     int findLHS(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        int ans = 0;
-        int i = 0;
+        int cnt = 0;
+        map<int, int> mp;
 
-        for (int j = 0; j < nums.size(); j++) {
-            while (nums[j] - nums[i] > 1)
-                i++;
-            if (nums[j] - nums[i] == 1)
-                ans = max(ans, j - i + 1);
+        for(auto it : nums) mp[it]++; 
+        // if(mp.size() == 1) return cnt;
+
+        for(auto it : mp){
+            if(mp.find(it.first + 1) != mp.end()){
+                cnt = max(cnt, it.second + mp[it.first + 1]);
+            }
         }
 
-        return ans;
+        return cnt;
     }
 };
