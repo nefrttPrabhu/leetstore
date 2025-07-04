@@ -4,46 +4,43 @@ public:
     int orangesRotting(vector<vector<int>>& grid) {
         int n = grid.size();
         int m = grid[0].size();
-        int fresh = 0;
-        int cnt = -1;
-
         queue<p> q;
+        int fresh = 0;
+        int time = 0;
+        vector<vector<int>> dir = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                if(grid[i][j] == 1){
-                    fresh++;
-                }
-                if(grid[i][j] == 2){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 2) {
                     q.push({i, j});
+                }
+                if (grid[i][j] == 1) {
+                    fresh++;
                 }
             }
         }
 
         if(fresh == 0) return 0;
 
-        vector<vector<int>> dir = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};
-        
-        while(!q.empty()){
+        while (!q.empty()) {
             int size = q.size();
-            cnt++;
-            while(size--){
-                p idx = q.front();
+            time++;
+            while (size--) {
+                p temp = q.front();
                 q.pop();
 
-                for(int i = 0; i < 4; i++){
-                    int a = idx.first + dir[i][0];
-                    int b = idx.second + dir[i][1];
+                for (int i = 0; i < 4; i++) {
+                    int x = temp.first + dir[i][0];
+                    int y = temp.second + dir[i][1];
 
-                    if(a < n && a >= 0 && b < m && b >= 0 && grid[a][b] == 1){
-                        grid[a][b] = 2;
-                        q.push({a, b});
+                    if (x < n && x >= 0 && y < m && y >= 0 && grid[x][y] == 1) {
+                        grid[x][y] = 2;
+                        q.push({x, y});
                         fresh--;
                     }
                 }
             }
         }
-        if(fresh != 0) return -1;
-        return cnt;
+        return fresh != 0 ? -1 : time - 1;
     }
 };
