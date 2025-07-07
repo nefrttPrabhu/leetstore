@@ -18,9 +18,7 @@ public:
                     }
                     i++;
                 }
-                mp[s[j]]++;
-                j++;
-            }
+            }  
         }
 
         return maxi;
