@@ -17,8 +17,8 @@ public:
                 for (auto it : mp) {
                     sum += it.second;
                 }
-                maxi = max(maxi, sum - 1);
-                mp[fruits[i]]--;
+                maxi = max(maxi, sum - 1); //-1 vo jo abhi recent add hua hai 
+                mp[fruits[i]]--; //sabse phele dekhe ka pura data remove 
                 if (mp[fruits[i]] == 0) {
                     mp.erase(fruits[i]);
                 }
