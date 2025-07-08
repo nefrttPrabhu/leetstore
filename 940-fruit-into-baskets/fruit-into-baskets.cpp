@@ -3,7 +3,8 @@ public:
     int totalFruit(vector<int>& fruits) {
         int s = fruits.size();
         map<int, int> mp;
-        int i = 0, j = 0;
+        int i = 0;
+        int j = 0;
         int maxi = 0;
 
         while (j < s) {
