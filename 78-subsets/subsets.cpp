@@ -15,8 +15,10 @@ public:
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> ans;
         vector<int> res;
-        int i = 0;
-        fng(nums, ans, res, i);
+
+        // int i = 0;
+
+        fng(nums, ans, res, 0);
         return ans;
     }
 };
