@@ -1,21 +1,30 @@
 class Solution {
 public:
-    void fng(vector<int>& nums, int idx, vector<vector<int>>& res) {
-        if (idx == nums.size()) {
-            res.push_back(nums);
-            return;
-        }
-
-        for (int i = idx; i < nums.size(); i++) {
-            swap(nums[idx], nums[i]);
-            fng(nums, idx + 1, res);
-            swap(nums[idx], nums[i]); // backtrack
-        }
-    }
-
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> res;
-        fng(nums, 0, res);
-        return res;
+        vector<vector<int>> result;
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        result.push_back(nums);
+
+        while (true) {
+            int i = n - 2;
+            while (i >= 0 && nums[i] >= nums[i + 1]) i--;
+            if (i < 0) break;
+
+            int j = n - 1;
+            while (nums[j] <= nums[i]) j--;
+            swap(nums[i], nums[j]);
+
+            int left = i + 1, right = n - 1;
+            while (left < right) {
+                swap(nums[left], nums[right]);
+                left++;
+                right--;
+            }
+
+            result.push_back(nums);
+        }
+
+        return result;
     }
 };
