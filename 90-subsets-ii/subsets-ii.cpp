@@ -9,8 +9,11 @@ public:
         res.push_back(nums[i]);
         fng(nums, st, res, i + 1);
 
+        int idx = i + 1;
+        while(idx < nums.size() && nums[idx] == nums[idx - 1]) idx++;
+
         res.pop_back();
-        fng(nums, st, res, i + 1);
+        fng(nums, st, res, idx);
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         sort(nums.begin(), nums.end());
