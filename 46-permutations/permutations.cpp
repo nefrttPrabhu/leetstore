@@ -1,27 +1,23 @@
 class Solution {
 public:
-    void backtrack(vector<int>& nums, vector<bool>& vis, vector<int>& res, vector<vector<int>>& ans) {
-        if (res.size() == nums.size()) {
-            ans.push_back(res);
+    void fng(vector<int>& nums, int idx, vector<vector<int>>& res) {
+        if (idx == nums.size()) {
+            res.push_back(nums);
             return;
         }
-        
-        for (int i = 0; i < nums.size(); ++i) {
-            if (vis[i]) continue;
-            vis[i] = 1;
-            res.push_back(nums[i]);
 
-            backtrack(nums, vis, res, ans);
-            res.pop_back();
-            vis[i] = 0;
+        for (int i = idx; i < nums.size(); i++) {
+            swap(nums[idx], nums[i]); //swap the change 
+
+            fng(nums, idx + 1, res);
+
+            swap(nums[i], nums[idx]); //revert the change 
         }
     }
+
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ans;
-        vector<int> res;
-        vector<bool> vis(nums.size(), 0);
-        
-        backtrack(nums, vis, res, ans);
-        return ans;
+        vector<vector<int>> res;
+        fng(nums, 0, res);
+        return res;
     }
 };
