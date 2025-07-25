@@ -7,11 +7,12 @@ public:
         }
 
         for (int i = idx; i < nums.size(); i++) {
-            swap(nums[idx], nums[i]); //swap the change 
+            swap(nums[idx], nums[i]); 
 
             fng(nums, idx + 1, res);
 
-            swap(nums[i], nums[idx]); //revert the change 
+            swap(nums[i], nums[idx]); 
+
         }
     }
 
