@@ -1,29 +1,25 @@
 class Solution {
 public:
-    void fng(vector<int>& nums, set<vector<int>>& st, vector<int>& res, int i){
-        if(i == nums.size()){
-            st.insert(res);
+    void fng(vector<int> nums, vector<int>& res, set<vector<int>>& ans, int idx){
+        if(idx == nums.size()){
+            ans.insert(res);
             return;
         }
 
-        res.push_back(nums[i]);
-        fng(nums, st, res, i + 1);
-
-        int idx = i + 1;
-        while(idx < nums.size() && nums[idx] == nums[idx - 1]) idx++;
+        res.push_back(nums[idx]);
+        fng(nums, res, ans, idx + 1);
 
         res.pop_back();
-        fng(nums, st, res, idx);
+        fng(nums, res, ans, idx + 1);
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         sort(nums.begin(), nums.end());
-        set<vector<int>> st;
+        set<vector<int>> ans;
+        vector<vector<int>> a;
         vector<int> res;
-        vector<vector<int>> ans;
 
-        fng(nums, st, res, 0);
-
-        for(auto it : st) ans.push_back(it);
-        return ans;
+        fng(nums, res, ans, 0);
+        for(auto it : ans) a.push_back(it);
+        return a;
     }
 };
