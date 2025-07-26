@@ -2,16 +2,16 @@ class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
         map<int, int> mp;
-        set<int> s;
+        set<int> st;
 
-        for(auto it : arr)
+        for(auto it : arr){
             mp[it]++;
+        }
 
-        for(auto it : mp)
-            s.insert(it.second);
+        for(auto it : mp){
+            st.insert(it.second);
+        }
 
-        if(s.size() == mp.size())
-        return true;
-        return false;
+        return mp.size() == st.size() ? true : false;
     }
 };
