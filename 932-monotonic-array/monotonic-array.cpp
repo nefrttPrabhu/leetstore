@@ -1,25 +1,18 @@
 class Solution {
 public:
     bool isMonotonic(vector<int>& nums) {
-        if(nums.size() == 1) return true;
-
-        int a = nums[0];
-        int b = nums[nums.size() - 1];
-
-        if(a <= b){ //increasing 
-            for(int i = 0; i < nums.size() - 1; i++){
-                if(nums[i + 1] < nums[i]) {
-                    return false;
-                }
+        bool inc = true;
+        bool dec = true;
+        
+        for(int i = 1; i < nums.size(); i++) {
+            if(nums[i] > nums[i - 1]) {
+                dec = false;
+            }
+            else if(nums[i] < nums[i - 1]) {
+                inc = false;
             }
         }
-        else{ //decreasing
-            for(int i = 0; i < nums.size() - 1; i++){
-                if(nums[i + 1] > nums[i]) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        
+        return inc || dec;
     }
 };
