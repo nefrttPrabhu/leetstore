@@ -14,13 +14,12 @@ public:
                 auto node = q.front();
                 q.pop();
 
-                int a = node ? node->val : -1; // use dummy value for null nodes
+                int a = node ? node->val : -1; 
 
                 if (node == nullptr) {
                     nullSeen = true;
                 } else {
                     if (nullSeen) {
-                        // Found a non-null node after a null — not complete
                         return false;
                     }
 
