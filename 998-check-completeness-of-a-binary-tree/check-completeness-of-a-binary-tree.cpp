@@ -14,7 +14,7 @@ public:
                 auto node = q.front();
                 q.pop();
 
-                int a = node ? node->val : -1; 
+                // int a = node ? node->val : -1; 
 
                 if (node == nullptr) {
                     nullSeen = true;
