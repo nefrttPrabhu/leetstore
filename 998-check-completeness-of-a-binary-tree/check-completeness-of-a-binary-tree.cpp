@@ -18,7 +18,8 @@ public:
 
                 if (node == nullptr) {
                     nullSeen = true;
-                } else {
+                } 
+                else {
                     if (nullSeen) {
                         return false;
                     }
