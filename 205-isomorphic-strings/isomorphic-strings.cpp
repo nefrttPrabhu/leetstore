@@ -1,32 +1,19 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        if (s.length() != t.length()) return false;
-
-        map<char, char> mp;
-        map<char, char> mpp;
-
-        for (int i = 0; i < s.length(); ++i) {
-            char c1 = s[i];
-            char c2 = t[i];
-
-            if (mp.count(c1)) {
-                if (mp[c1] != c2)
-                    return false;
-            } 
-            else {
-                mp[c1] = c2;
+        unordered_map<char,char> map1,map2;
+        for(int i = 0; i < s.size(); i++){
+            if(map1.find(t[i]) != map1.end() && map1[t[i]] != s[i]){
+                return false;
             }
-
-            if (mpp.count(c2)) {
-                if (mpp[c2] != c1)
-                    return false;
-            } 
-            else {
-                mpp[c2] = c1;
+            if(map2.find(s[i]) != map2.end() && map2[s[i]] != t[i]){
+                return false;
+            }
+            else{
+                map1[t[i]] = s[i];
+                map2[s[i]] = t[i];
             }
         }
-
-        return true;
+        return  true;
     }
 };
