@@ -20,7 +20,7 @@ public:
 
         vector<int> ans;
         while(!pqmin.empty()) {
-            ans.push_back(pqmin.top().second); // get the original number
+            ans.push_back(pqmin.top().second);
             pqmin.pop();
         }
 
