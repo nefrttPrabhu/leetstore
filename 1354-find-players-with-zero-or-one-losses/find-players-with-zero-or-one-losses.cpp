@@ -18,7 +18,7 @@ public:
         vector<int> nlost;
         for (int i = 0; i < matches.size(); i++) {
             int winner = matches[i][0];
-            if (mp.find(winner) == mp.end() && st.find(winner) == st.end()) {
+            if (mp.find(winner) == mp.end() && st.find(winner) == st.end()) { 
                 nlost.push_back(winner);
                 st.insert(winner);
             }
